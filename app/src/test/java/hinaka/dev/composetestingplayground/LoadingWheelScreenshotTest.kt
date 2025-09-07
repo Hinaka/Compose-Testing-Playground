@@ -42,7 +42,7 @@ class LoadingWheelScreenshotTest {
         }
 
         composeTestRule.onRoot().captureRoboImage(
-            filePath = "src/test/screenshots/LoadingWheel/LoadingWheel_light.png"
+            filePath = "build/outputs/roborazzi/LoadingWheel/LoadingWheel_light.png"
         )
     }
 
@@ -63,7 +63,7 @@ class LoadingWheelScreenshotTest {
         }
 
         composeTestRule.onRoot().captureRoboImage(
-            filePath = "src/test/screenshots/LoadingWheel/LoadingWheel_dark.png"
+            filePath = "build/outputs/roborazzi/LoadingWheel/LoadingWheel_dark.png"
         )
     }
 
@@ -90,7 +90,7 @@ class LoadingWheelScreenshotTest {
             composeTestRule.mainClock.advanceTimeBy(deltaTime)
             composeTestRule.onRoot()
                 .captureRoboImage(
-                    filePath = "src/test/screenshots/LoadingWheel/LoadingWheel_animation_$deltaTime.png"
+                    filePath = "build/outputs/roborazzi/LoadingWheel/LoadingWheel_animation_$deltaTime.png"
                 )
         }
     }
