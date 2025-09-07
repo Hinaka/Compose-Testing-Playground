@@ -1,8 +1,13 @@
 package hinaka.dev.composetestingplayground
 
 import androidx.activity.ComponentActivity
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.size
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onRoot
+import androidx.compose.ui.unit.dp
 import com.github.takahirom.roborazzi.captureRoboImage
 import hinaka.dev.composetestingplayground.ui.component.LoadingWheel
 import hinaka.dev.composetestingplayground.ui.theme.ComposeTestingPlaygroundTheme
@@ -26,13 +31,19 @@ class LoadingWheelScreenshotTest {
             ComposeTestingPlaygroundTheme(
                 darkTheme = false
             ) {
-                LoadingWheel(
-                    contentDesc = "test"
-                )
+                Box(
+                    modifier = Modifier.size(200.dp), contentAlignment = Alignment.Center
+                ) {
+                    LoadingWheel(
+                        contentDesc = "test"
+                    )
+                }
             }
         }
 
-        composeTestRule.onRoot().captureRoboImage()
+        composeTestRule.onRoot().captureRoboImage(
+            filePath = "src/test/screenshots/LoadingWheel/LoadingWheel_light.png"
+        )
     }
 
     @Test
@@ -41,13 +52,19 @@ class LoadingWheelScreenshotTest {
             ComposeTestingPlaygroundTheme(
                 darkTheme = true
             ) {
-                LoadingWheel(
-                    contentDesc = "test"
-                )
+                Box(
+                    modifier = Modifier.size(200.dp), contentAlignment = Alignment.Center
+                ) {
+                    LoadingWheel(
+                        contentDesc = "test"
+                    )
+                }
             }
         }
 
-        composeTestRule.onRoot().captureRoboImage()
+        composeTestRule.onRoot().captureRoboImage(
+            filePath = "src/test/screenshots/LoadingWheel/LoadingWheel_dark.png"
+        )
     }
 
     @Test
@@ -58,9 +75,13 @@ class LoadingWheelScreenshotTest {
             ComposeTestingPlaygroundTheme(
                 darkTheme = false
             ) {
-                LoadingWheel(
-                    contentDesc = "test"
-                )
+                Box(
+                    modifier = Modifier.size(200.dp), contentAlignment = Alignment.Center
+                ) {
+                    LoadingWheel(
+                        contentDesc = "test"
+                    )
+                }
             }
         }
 
@@ -68,7 +89,9 @@ class LoadingWheelScreenshotTest {
         listOf(20L, 115L, 724L, 1000L).forEach { deltaTime ->
             composeTestRule.mainClock.advanceTimeBy(deltaTime)
             composeTestRule.onRoot()
-                .captureRoboImage()
+                .captureRoboImage(
+                    filePath = "src/test/screenshots/LoadingWheel/LoadingWheel_animation_$deltaTime.png"
+                )
         }
     }
 }
